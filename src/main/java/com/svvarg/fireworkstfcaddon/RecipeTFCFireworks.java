@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.svvarg.tfcfireworksaddon;
+package com.svvarg.fireworkstfcaddon;
 
 /**
  *
@@ -23,21 +23,30 @@ import com.bioxx.tfc.Items.ItemOre;
 import com.bioxx.tfc.Items.ItemTerra;
 import com.bioxx.tfc.api.Constant.Global;
 import com.bioxx.tfc.api.Interfaces.ISmeltable;
+import static com.svvarg.fireworkstfcaddon.FireworksTFCAddon.fireworksFlask;
 import net.minecraft.item.Item;
 
 public class RecipeTFCFireworks implements IRecipe {
 
     private ItemStack field_92102_a;
     private static final String __OBFID = "CL_00000083";
+    ItemStack Flask = new ItemStack(fireworksFlask, 1, 0);
+
 
     /**
      * Used to check if a recipe matches current crafting inventory
      */
-    
     private boolean isGoldNugget(ItemStack is) {
-        return ( (is.getItem() instanceof ItemOre) && (((ISmeltable) is.getItem()).getMetalType(is) == Global.GOLD)&&
-                (((ISmeltable)is.getItem()).getMetalReturnAmount(is)<=15 ) )  ;         
+        return ((is.getItem() instanceof ItemOre) && (((ISmeltable) is.getItem()).getMetalType(is) == Global.GOLD)
+                && (((ISmeltable) is.getItem()).getMetalReturnAmount(is) <= 15));
     }
+    private boolean isFireworkFlask(ItemStack is){
+      return ( is != null && ( is.getItem() == Flask.getItem() ) && ( is.getItemDamage()==0) );
+    }
+    private boolean isPowderCharge(ItemStack is){
+      return ( is != null && ( is.getItem() == Flask.getItem() ) && ( is.getItemDamage()==1) );
+    }
+    
 
     public boolean matches(InventoryCrafting p_77569_1_, World p_77569_2_) {
         this.field_92102_a = null;
@@ -49,7 +58,16 @@ public class RecipeTFCFireworks implements IRecipe {
         int j1 = 0;
         //ItemStack gold = new ItemStack(TFCItems.smallOreChunk, 1, 1);
         //Item goldNugget = gold.getItem();
-
+/*
+        List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
+        Iterator<IRecipe> Leash = recipes.iterator();
+        while (Leash.hasNext()) {
+            ItemStack is = Leash.next().getRecipeOutput();
+            if (is != null && is.itemID == Items.lead.itemID) {
+                Leash.remove();
+            }
+        };
+*/
         //Item diamond;
         for (int k1 = 0; k1 < p_77569_1_.getSizeInventory(); ++k1) {
             ItemStack itemstack = p_77569_1_.getStackInSlot(k1);
@@ -60,20 +78,20 @@ public class RecipeTFCFireworks implements IRecipe {
                 if (itemstack.getItem() == Items.gunpowder) {
                     ++j;
                 } else if (itemstack.getItem() == Items.firework_charge) {
-                    ++l;                    
+                    ++l;
                 } else if (itemstack.getItem() == TFCItems.dye /* Items.dye*/) {
                     ++k;
-                } else if (itemstack.getItem() == Items.paper) {
-                    ++i;
+                } else if (isFireworkFlask(itemstack) /*Items.paper*/) {
+                    ++i;                    
                 } else if (itemstack.getItem() == Items.redstone /*Items.glowstone_dust*/) {
                     ++i1;
                 } else if (itemstack.getItem() == TFCItems.gemDiamond /*Items.diamond*/) {
                     ++i1;
-                } else if (itemstack.getItem() == Items.fire_charge) {
-                    ++j1;
+                } else if (isPowderCharge(itemstack) /*Items.fire_charge*/) {
+                    ++j1;                    
                 } else if (itemstack.getItem() == Items.feather) {
                     ++j1;
-                } else if (isGoldNugget(itemstack) /*Items.gold_nugget*/ ) {
+                } else if (isGoldNugget(itemstack) /*Items.gold_nugget*/) {
                     ++j1;
                 } else {
                     if (itemstack.getItem() != TFCItems.wroughtIronUnfinishedHelmet /* Items.skull*/) {
@@ -133,7 +151,7 @@ public class RecipeTFCFireworks implements IRecipe {
                             nbttagcompound1.setBoolean("Flicker", true);
                         } else if (itemstack2.getItem() == TFCItems.gemDiamond /*Items.diamond*/) {
                             nbttagcompound1.setBoolean("Trail", true);
-                        } else if (itemstack2.getItem() ==/*TFCItems.coal */ Items.fire_charge) {
+                        } else if ( isPowderCharge(itemstack2) /*Items.fire_charge*/) {
                             b0 = 1;
                         } else if (itemstack2.getItem() == Items.feather) {
                             b0 = 4;
