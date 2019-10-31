@@ -25,43 +25,41 @@ public class FireworksTFCAddon {
 
     public static Item shelmet;
 
-//    ArmorMaterial sarmor = EnumHelper.addArmorMaterial("sarmor", 20, new int[]{3, 7, 6, 3}, 10);
+
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
 
         tfcfireworks = new ItemFireworks();
         GameRegistry.registerItem(tfcfireworks, "fireworks");
         
-
-//        shelmet = new ItemSArmor(sarmor, 0, "shelmet");
-//        GameRegistry.registerItem(shelmet, "SHelmet");        
-
-        //CraftingManager.getInstance().getRecipeList().add(new RecipeTFCFireworks());
-
+        
+        //remove old vanilla recipes for firework
         List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
         for (int i = 0; i < recipes.size(); i++) {
            if ( recipes.get(i).getClass().getSimpleName().equals("RecipeFireworks") ){
               //CraftingManager.getInstance().getRecipeList().set(i, new RecipeTFCFireworks() ); 
-              recipes.set(i, new RecipeTFCFireworks());
+              //recipes.set(i, new RecipeTFCFireworks());
+              recipes.remove(i);
               break;                      
            }
         }
+        CraftingManager.getInstance().getRecipeList().add(new RecipeTFCFireworks());
     }
 
     @EventHandler
     public void init(FMLInitializationEvent event) {
         
-        // Caplule
+        
         GameRegistry.addRecipe(new ItemStack(tfcfireworks, 1, 0),
                 " C ",
                 "BAB",
-                " D ", 'A', TFCItems.reeds, 'B', Items.paper, 'C', Items.string, 'D', TFCItems.stick);
+                " D ", 'A', TFCItems.reeds, 'B', Items.paper, 'C', Items.string/*, TFCItems.woolYarn*/, 'D', TFCItems.stick);
 
-        GameRegistry.addRecipe(new ItemStack(tfcfireworks, 1, 0),
+        /*GameRegistry.addRecipe(new ItemStack(tfcfireworks, 1, 0),
                 " C ",
                 "BAB",
                 " D ", 'A', TFCItems.reeds, 'B', Items.paper, 'C', TFCItems.woolYarn, 'D', TFCItems.stick);
-        
+        */
         //gunpowder Charge 
         GameRegistry.addRecipe(new ItemStack(tfcfireworks, 1, 1),                
                 "YXY",
@@ -69,6 +67,12 @@ public class FireworksTFCAddon {
                 "YXY", 
                 'X', Items.gunpowder, 'Y', new ItemStack(TFCItems.coal,1,1), 
                 'Z', new ItemStack(TFCItems.powder, 1, 2));//Charcoal & Graphite powder
+        
+        //dublicate reciples for showing at NEI
+        GameRegistry.addShapelessRecipe(new ItemStack(Items.fireworks), new ItemStack(tfcfireworks, 1, 0).getItem(), Items.gunpowder);
+      //  GameRegistry.addShapelessRecipe(new ItemStack(Items.fire_charge), new ItemStack(tfcfireworks, 1, 0).getItem(), Items.gunpowder);
+
+                
 
     }
 }
