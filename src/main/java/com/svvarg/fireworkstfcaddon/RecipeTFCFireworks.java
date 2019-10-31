@@ -30,7 +30,7 @@ public class RecipeTFCFireworks implements IRecipe {
 
     private ItemStack field_92102_a;
     private static final String __OBFID = "CL_00000083";
-    ItemStack Flask = new ItemStack(tfcfireworks, 1, 0);
+    ItemStack Capsule = new ItemStack(tfcfireworks, 1, 0);
 
 
     /**
@@ -41,10 +41,10 @@ public class RecipeTFCFireworks implements IRecipe {
                 && (((ISmeltable) is.getItem()).getMetalReturnAmount(is) <= 15));
     }
     private boolean isFireworkCapsule(ItemStack is){
-      return ( is != null && ( is.getItem() == Flask.getItem() ) && ( is.getItemDamage()==0) );
+      return ( is != null && ( is.getItem() == Capsule.getItem() ) && ( is.getItemDamage()==0) );
     }
     private boolean isPowderCharge(ItemStack is){
-      return ( is != null && ( is.getItem() == Flask.getItem() ) && ( is.getItemDamage()==1) );
+      return ( is != null && ( is.getItem() == Capsule.getItem() ) && ( is.getItemDamage()==1) );
     }
     
 

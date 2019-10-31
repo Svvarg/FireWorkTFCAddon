@@ -15,7 +15,7 @@ import java.util.List;
 import net.minecraft.init.Items;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import com.svvarg.fireworkstfcaddon.NEIIntegration;
+
 
 @Mod(modid = FireworksTFCAddon.MODID, version = FireworksTFCAddon.VERSION)
 public class FireworksTFCAddon {

@@ -6,6 +6,7 @@
 package com.svvarg.fireworkstfcaddon;
 
 import codechicken.nei.api.API;
+import codechicken.nei.recipe.FireworkRecipeHandler;
 
 
 /**
@@ -14,8 +15,10 @@ import codechicken.nei.api.API;
  */
 public class NEIIntegration {
     public static void Load(){
-       
+               
         API.registerRecipeHandler(new FireworkTFCRecipeHandler());
+        API.registerUsageHandler(new FireworkTFCRecipeHandler());
+
     }
     
     
