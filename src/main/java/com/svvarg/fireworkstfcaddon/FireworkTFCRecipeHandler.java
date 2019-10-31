@@ -49,12 +49,19 @@ public class FireworkTFCRecipeHandler extends ShapelessRecipeHandler
             setIngredients(itemList);
 
             List<PositionedStack> ingreds = getIngredients();
-            for (int i = 0; i < 9; i++)
+            /*
+            System.out.println("-=-=-=-");
+            for (int i = 0; i < 9; i++){
+                System.out.println("["+ingreds.get(i)+"]");
                 inventoryCrafting.setInventorySlotContents(i, i < ingreds.size() ? ingreds.get(i).item : null);
+            }
+            
+            //System.out.println("!PRINT!" + inventoryCrafting) ;
 
             if (!recipeTFCFireworks.matches(inventoryCrafting, null))
                 throw new RuntimeException("Invalid Recipe?");
             setResult(recipeTFCFireworks.getCraftingResult(null));
+            */
         }
     }
 
