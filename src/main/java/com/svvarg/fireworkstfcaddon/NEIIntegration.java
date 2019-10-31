@@ -16,7 +16,7 @@ import codechicken.nei.recipe.FireworkRecipeHandler;
 public class NEIIntegration {
     public static void Load(){
                
-        API.registerRecipeHandler(new FireworkTFCRecipeHandler());
+        //API.registerRecipeHandler(new FireworkTFCRecipeHandler());
         API.registerUsageHandler(new FireworkTFCRecipeHandler());
 
     }

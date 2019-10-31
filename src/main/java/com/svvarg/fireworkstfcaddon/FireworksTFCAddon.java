@@ -47,10 +47,6 @@ public class FireworksTFCAddon {
            }
         }
         CraftingManager.getInstance().getRecipeList().add(new RecipeTFCFireworks());
-        //Crazy way to display fireworks crafts at NEI
-        if (Loader.isModLoaded("NotEnoughItems")) {
-            NEIIntegration.Load();
-        }
     }
 
     @EventHandler
@@ -82,4 +78,12 @@ public class FireworksTFCAddon {
                 
 
     }
+    @EventHandler
+    public void postInit(FMLPreInitializationEvent event) {
+        //Crazy way to display fireworks crafts at NEI
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            NEIIntegration.Load();
+        }
+    }
+    
 }

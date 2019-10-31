@@ -79,18 +79,20 @@ public class FireworkTFCRecipeHandler extends ShapelessRecipeHandler
     }
 
     private void loadAllFireworks() {
-        ItemStack gold = new ItemStack(TFCItems.smallOreChunk, 1, 1);
-        Item goldNugget = gold.getItem();
+        ItemStack gold = new ItemStack(TFCItems.smallOreChunk, 1, 1);//
+        Item goldNugget = gold.getItem();//
+        
+        Item Capsule = (new ItemStack(tfcfireworks, 1, 0)).getItem();//
+        Item Charge = (new ItemStack(tfcfireworks, 1, 1)).getItem();//
+        
         
         //charges
-        Item[] shapes = new Item[]{null, Items.fire_charge,  goldNugget/*Items.gold_nugget*/, Items.feather,  TFCItems.wroughtIronUnfinishedHelmet /*Items.skull*/};
+        Item[] shapes = new Item[]{null, Charge/*Items.fire_charge*/,  goldNugget/*Items.gold_nugget*/, Items.feather,  TFCItems.wroughtIronUnfinishedHelmet /*Items.skull*/};
         Item[] effects = new Item[]{null, TFCItems.gemDiamond, Items.redstone /* glowstone_dust*/};
         for (Item shape : shapes)
             for (Item effect : effects)
                 genRecipe(Items.gunpowder, shape, effect, TFCItems.dye , TFCItems.dye , 0);
         
-        Item Capsule = (new ItemStack(tfcfireworks, 1, 0)).getItem();
-        Item Charge = (new ItemStack(tfcfireworks, 1, 1)).getItem();
         //fireworks
         genRecipe(Items.gunpowder, Capsule/* Items.paper*/,Charge/* Items.firework_charge*/, 2);
         genRecipe(Items.gunpowder, Items.gunpowder, Capsule/* Items.paper*/,Charge/* Items.firework_charge*/, 2);
