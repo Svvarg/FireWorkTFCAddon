@@ -20,17 +20,17 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.world.World;
 import com.bioxx.tfc.api.TFCItems;
 import com.bioxx.tfc.Items.ItemOre;
-import com.bioxx.tfc.Items.ItemTerra;
 import com.bioxx.tfc.api.Constant.Global;
 import com.bioxx.tfc.api.Interfaces.ISmeltable;
-import static com.svvarg.fireworkstfcaddon.FireworksTFCAddon.fireworksFlask;
-import net.minecraft.item.Item;
+import static com.svvarg.fireworkstfcaddon.FireworksTFCAddon.tfcfireworks;
+
+
 
 public class RecipeTFCFireworks implements IRecipe {
 
     private ItemStack field_92102_a;
     private static final String __OBFID = "CL_00000083";
-    ItemStack Flask = new ItemStack(fireworksFlask, 1, 0);
+    ItemStack Flask = new ItemStack(tfcfireworks, 1, 0);
 
 
     /**
@@ -40,7 +40,7 @@ public class RecipeTFCFireworks implements IRecipe {
         return ((is.getItem() instanceof ItemOre) && (((ISmeltable) is.getItem()).getMetalType(is) == Global.GOLD)
                 && (((ISmeltable) is.getItem()).getMetalReturnAmount(is) <= 15));
     }
-    private boolean isFireworkFlask(ItemStack is){
+    private boolean isFireworkCapsule(ItemStack is){
       return ( is != null && ( is.getItem() == Flask.getItem() ) && ( is.getItemDamage()==0) );
     }
     private boolean isPowderCharge(ItemStack is){
@@ -58,17 +58,7 @@ public class RecipeTFCFireworks implements IRecipe {
         int j1 = 0;
         //ItemStack gold = new ItemStack(TFCItems.smallOreChunk, 1, 1);
         //Item goldNugget = gold.getItem();
-/*
-        List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
-        Iterator<IRecipe> Leash = recipes.iterator();
-        while (Leash.hasNext()) {
-            ItemStack is = Leash.next().getRecipeOutput();
-            if (is != null && is.itemID == Items.lead.itemID) {
-                Leash.remove();
-            }
-        };
-*/
-        //Item diamond;
+        
         for (int k1 = 0; k1 < p_77569_1_.getSizeInventory(); ++k1) {
             ItemStack itemstack = p_77569_1_.getStackInSlot(k1);
 
@@ -81,7 +71,7 @@ public class RecipeTFCFireworks implements IRecipe {
                     ++l;
                 } else if (itemstack.getItem() == TFCItems.dye /* Items.dye*/) {
                     ++k;
-                } else if (isFireworkFlask(itemstack) /*Items.paper*/) {
+                } else if (isFireworkCapsule(itemstack) /*Items.paper*/) {
                     ++i;                    
                 } else if (itemstack.getItem() == Items.redstone /*Items.glowstone_dust*/) {
                     ++i1;
@@ -232,5 +222,6 @@ public class RecipeTFCFireworks implements IRecipe {
 
     public ItemStack getRecipeOutput() {
         return this.field_92102_a;
+        
     }
 }

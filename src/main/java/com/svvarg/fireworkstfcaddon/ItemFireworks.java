@@ -20,7 +20,7 @@ import net.minecraft.util.MathHelper;
  * @author Swarg
  */
 public class ItemFireworks extends Item{
-    private static final String[] NAME = {"fireworksFlask","powderCharge"};
+    private static final String[] NAME = {"fireworksCapsule","powderCharge"};
     
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
