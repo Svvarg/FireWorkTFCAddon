@@ -1,7 +1,9 @@
 package com.svvarg.fireworkstfcaddon;
 
 //import net.minecraft.entity.Entity;
+
 import com.bioxx.tfc.api.TFCItems;
+import cpw.mods.fml.common.Loader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.Mod;
@@ -13,6 +15,7 @@ import java.util.List;
 import net.minecraft.init.Items;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
+import com.svvarg.fireworkstfcaddon.NEIIntegration;
 
 @Mod(modid = FireworksTFCAddon.MODID, version = FireworksTFCAddon.VERSION)
 public class FireworksTFCAddon {
@@ -44,6 +47,10 @@ public class FireworksTFCAddon {
            }
         }
         CraftingManager.getInstance().getRecipeList().add(new RecipeTFCFireworks());
+        //Crazy way to display fireworks crafts at NEI
+        if (Loader.isModLoaded("NotEnoughItems")) {
+            NEIIntegration.Load();
+        }
     }
 
     @EventHandler
