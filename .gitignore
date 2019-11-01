@@ -93,6 +93,12 @@ atlassian-ide-plugin.xml
 /eclipse/options.txt
 /eclipse/eula.txt
 /eclipse/server.properties
+/eclipse/banned-ips.json
+/eclipse/banned-players.json
+/eclipse/ops.json
+/eclipse/usercache.json
+/eclipse/whitelist.json
+/eclipse/world/
 
 
 ### NetBeans ###

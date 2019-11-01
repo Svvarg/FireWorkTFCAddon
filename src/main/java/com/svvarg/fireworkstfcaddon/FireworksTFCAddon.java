@@ -64,8 +64,8 @@ public class FireworksTFCAddon {
                 'X', Items.gunpowder, 'Y', new ItemStack(TFCItems.coal, 1, 1),
                 'Z', new ItemStack(TFCItems.powder, 1, 2));//Charcoal & Graphite powder
     }
-
-    @EventHandler
+    @SideOnly(Side.CLIENT)   
+    @EventHandler    
     public void postInit(FMLInitializationEvent event) {
 
         //Way to display fireworks crafts at NEI

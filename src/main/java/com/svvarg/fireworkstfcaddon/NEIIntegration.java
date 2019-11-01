@@ -17,9 +17,9 @@ import cpw.mods.fml.relauncher.SideOnly;
  */
 
 public class NEIIntegration {
-        
-    public static void Load(){
-       
+    
+    
+    public static void Load(){       
         
         API.registerRecipeHandler(new FireworkTFCRecipeHandler());
         API.registerUsageHandler(new FireworkTFCRecipeHandler());
