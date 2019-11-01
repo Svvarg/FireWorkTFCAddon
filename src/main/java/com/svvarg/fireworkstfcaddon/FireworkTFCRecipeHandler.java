@@ -49,10 +49,10 @@ public class FireworkTFCRecipeHandler extends ShapelessRecipeHandler
             setIngredients(itemList);
 
             List<PositionedStack> ingreds = getIngredients();
-            /*
-            System.out.println("-=-=-=-");
-            for (int i = 0; i < 9; i++){
-                System.out.println("["+ingreds.get(i)+"]");
+            
+            
+            for (int i = 0; i < 9; i++){                
+                //inventoryCrafting.setInventorySlotContents(i, i < ingreds.size() ? ingreds.get(i).item : null);
                 inventoryCrafting.setInventorySlotContents(i, i < ingreds.size() ? ingreds.get(i).item : null);
             }
             
@@ -61,7 +61,7 @@ public class FireworkTFCRecipeHandler extends ShapelessRecipeHandler
             if (!recipeTFCFireworks.matches(inventoryCrafting, null))
                 throw new RuntimeException("Invalid Recipe?");
             setResult(recipeTFCFireworks.getCraftingResult(null));
-            */
+            
         }
     }
 
@@ -86,24 +86,22 @@ public class FireworkTFCRecipeHandler extends ShapelessRecipeHandler
     }
 
     private void loadAllFireworks() {
-        ItemStack gold = new ItemStack(TFCItems.smallOreChunk, 1, 1);//
-        Item goldNugget = gold.getItem();//
-        
-        Item Capsule = (new ItemStack(tfcfireworks, 1, 0)).getItem();//
-        Item Charge = (new ItemStack(tfcfireworks, 1, 1)).getItem();//
-        
+        ItemStack sGoldNugget = new ItemStack(TFCItems.smallOreChunk, 1, 1);//               
+        ItemStack sCapsule = (new ItemStack(tfcfireworks, 1, 0));//
+        ItemStack sCharge =new ItemStack(tfcfireworks, 1, 1);//                           
         
         //charges
-        Item[] shapes = new Item[]{null, Charge/*Items.fire_charge*/,  goldNugget/*Items.gold_nugget*/, Items.feather,  TFCItems.wroughtIronUnfinishedHelmet /*Items.skull*/};
-        Item[] effects = new Item[]{null, TFCItems.gemDiamond, Items.redstone /* glowstone_dust*/};
-        for (Item shape : shapes)
-            for (Item effect : effects)
+        ItemStack[] shapes = new ItemStack[]{null,sCharge /*Items.fire_charge*/,  sGoldNugget/*Items.gold_nugget*/, new ItemStack(Items.feather,1), new ItemStack( TFCItems.wroughtIronUnfinishedHelmet,1) /*Items.skull*/};        
+        ItemStack[] effects = new ItemStack[]{null, new ItemStack(TFCItems.gemDiamond,1), new ItemStack(Items.redstone,1) /* glowstone_dust*/};
+        
+        for (ItemStack shape : shapes)
+            for (ItemStack effect : effects)
                 genRecipe(Items.gunpowder, shape, effect, TFCItems.dye , TFCItems.dye , 0);
         
         //fireworks
-        genRecipe(Items.gunpowder, Capsule/* Items.paper*/,Charge/* Items.firework_charge*/, 2);
-        genRecipe(Items.gunpowder, Items.gunpowder, Capsule/* Items.paper*/,Charge/* Items.firework_charge*/, 2);
-        genRecipe(Items.gunpowder, Items.gunpowder, Items.gunpowder, Capsule/* Items.paper*/, Charge/* Items.firework_charge*/, 2);
+        genRecipe(Items.gunpowder, sCapsule/* Items.paper*/, Items.firework_charge, 2);
+        genRecipe(Items.gunpowder, Items.gunpowder, sCapsule/* Items.paper*/, Items.firework_charge, 2);
+        genRecipe(Items.gunpowder, Items.gunpowder, Items.gunpowder, sCapsule/* Items.paper*/, Items.firework_charge, 2);
 
         //setup a valid charge to use for the recolour recipe
         for (int i = 0; i < 9; i++)
@@ -177,12 +175,13 @@ public class FireworkTFCRecipeHandler extends ShapelessRecipeHandler
     public String getRecipeName() {
         return NEIClientUtils.translate("recipe.firework");
     }
-/*
+
     @Override
     public List<String> handleTooltip(GuiRecipe gui, List<String> currenttip, int recipe) {
         currenttip = super.handleTooltip(gui, currenttip, recipe);
         Point mousepos = GuiDraw.getMousePosition();
-        Point relMouse = new Point(mousepos.x -gui.guiLeft, mousepos.y - gui.guiTop);
+//        Point relMouse = new Point(mousepos.x -gui.guiLeft, mousepos.y - gui.guiTop);
+        Point relMouse = new Point(mousepos.x , mousepos.y );
         Point recipepos = gui.getRecipePosition(recipe);
         if (currenttip.isEmpty() && GuiContainerManager.getStackMouseOver(gui) == null &&
                 new Rectangle(recipepos.x, recipepos.y, 166, 55).contains(relMouse))
@@ -190,5 +189,5 @@ public class FireworkTFCRecipeHandler extends ShapelessRecipeHandler
                     "recipe.fireworkTFC.tooltip" + ((CachedFireworkRecipe) arecipes.get(recipe)).recipeType));
         return currenttip;
 
-    }*/
+    }
 }

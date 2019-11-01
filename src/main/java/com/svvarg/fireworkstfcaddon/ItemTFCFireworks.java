@@ -19,13 +19,13 @@ import net.minecraft.util.MathHelper;
  *
  * @author Swarg
  */
-public class ItemFireworks extends Item{
+public class ItemTFCFireworks extends Item{
     private static final String[] NAME = {"fireworksCapsule","powderCharge"};
     
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
     
-    public ItemFireworks() {
+    public ItemTFCFireworks() {
         setUnlocalizedName(FireworksTFCAddon.MODID+"_");/*was used getUnlocalizedName overwritten there */
         setHasSubtypes(true);
         setCreativeTab(CreativeTabs.tabMisc);        

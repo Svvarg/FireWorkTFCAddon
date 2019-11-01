@@ -91,6 +91,8 @@ atlassian-ide-plugin.xml
 #MC Player info file
 /eclipse/usernamecache.json
 /eclipse/options.txt
+/eclipse/eula.txt
+/eclipse/server.properties
 
 
 ### NetBeans ###

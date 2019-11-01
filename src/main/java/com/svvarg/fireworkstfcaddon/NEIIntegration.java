@@ -6,17 +6,22 @@
 package com.svvarg.fireworkstfcaddon;
 
 import codechicken.nei.api.API;
-import codechicken.nei.recipe.FireworkRecipeHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 
 
 /**
  *
  * @author Swarg
  */
+
 public class NEIIntegration {
+        
     public static void Load(){
-               
-        //API.registerRecipeHandler(new FireworkTFCRecipeHandler());
+       
+        
+        API.registerRecipeHandler(new FireworkTFCRecipeHandler());
         API.registerUsageHandler(new FireworkTFCRecipeHandler());
 
     }

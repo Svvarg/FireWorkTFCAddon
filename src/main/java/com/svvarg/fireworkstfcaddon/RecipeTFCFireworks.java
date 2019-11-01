@@ -24,6 +24,9 @@ import com.bioxx.tfc.api.Constant.Global;
 import com.bioxx.tfc.api.Interfaces.ISmeltable;
 import static com.svvarg.fireworkstfcaddon.FireworksTFCAddon.tfcfireworks;
 
+//item.fireworks.name=Firework Rocket
+//item.fireworksCharge.name=Firework Star    is a  gunpowder + dye, use at craft fireworksRocket many count at craft
+//item.fireball.name=Fire Charge  is a gunPowder coal blaze, use on craft fireworkStar only one
 
 
 public class RecipeTFCFireworks implements IRecipe {
@@ -31,6 +34,7 @@ public class RecipeTFCFireworks implements IRecipe {
     private ItemStack field_92102_a;
     private static final String __OBFID = "CL_00000083";
     ItemStack Capsule = new ItemStack(tfcfireworks, 1, 0);
+    ItemStack Charge = new ItemStack(tfcfireworks, 1, 1);
 
 
     /**
@@ -44,7 +48,7 @@ public class RecipeTFCFireworks implements IRecipe {
       return ( is != null && ( is.getItem() == Capsule.getItem() ) && ( is.getItemDamage()==0) );
     }
     private boolean isPowderCharge(ItemStack is){
-      return ( is != null && ( is.getItem() == Capsule.getItem() ) && ( is.getItemDamage()==1) );
+      return ( is != null && ( is.getItem() == Charge.getItem() ) && ( is.getItemDamage()==1) );
     }
     
 
@@ -56,8 +60,6 @@ public class RecipeTFCFireworks implements IRecipe {
         int l = 0;
         int i1 = 0;
         int j1 = 0;
-        //ItemStack gold = new ItemStack(TFCItems.smallOreChunk, 1, 1);
-        //Item goldNugget = gold.getItem();
         
         for (int k1 = 0; k1 < p_77569_1_.getSizeInventory(); ++k1) {
             ItemStack itemstack = p_77569_1_.getStackInSlot(k1);
@@ -67,7 +69,7 @@ public class RecipeTFCFireworks implements IRecipe {
 
                 if (itemstack.getItem() == Items.gunpowder) {
                     ++j;
-                } else if (itemstack.getItem() == Items.firework_charge) {
+                } else if (itemstack.getItem() == Items.firework_charge) {//Star gunpowder + dye
                     ++l;
                 } else if (itemstack.getItem() == TFCItems.dye /* Items.dye*/) {
                     ++k;
